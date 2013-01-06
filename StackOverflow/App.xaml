@@ -8,9 +8,17 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Stackoverflow" x:Key="LocalizedStrings"/>
-        
-        <!-- Colors -->
+
+        <!-- Colors #323653 -->
         <Color x:Key="StackOverflowBackgroundColor">#323653</Color>
+        
+        <SolidColorBrush x:Key="StackOverflowBackground" Color="{StaticResource StackOverflowBackgroundColor}" />
+        
+        <!-- Controls -->
+        <Style x:Key="StackOverflowPivotItemStyle" TargetType="phone:PivotItem" >
+            <Setter Property="Margin" Value="0, 10, 0, 0" />
+            <Setter Property="Background" Value="{StaticResource StackOverflowBackgroundColor}" />
+        </Style>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

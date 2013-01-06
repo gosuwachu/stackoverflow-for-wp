@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Stackoverflow"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -21,10 +22,38 @@
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <phone:WebBrowser x:Name="WebBrowser" IsScriptEnabled="True" IsGeolocationEnabled="True"
-                          Navigating="WebBrowser_Navigating"
-                          Navigated="WebBrowser_Navigated"
-                          NavigationFailed="WebBrowser_NavigationFailed"/>
+        <phone:Pivot x:Name="HomeScreen" Background="{StaticResource StackOverflowBackground}" >
+            <phone:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Background="Gray">
+                        <Border BorderThickness="1" BorderBrush="White">
+                            <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextTitle3Style}" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </phone:Pivot.HeaderTemplate>
+
+            <phone:Pivot.TitleTemplate>
+                <DataTemplate>
+                </DataTemplate>
+            </phone:Pivot.TitleTemplate>
+
+            <phone:PivotItem Header="main page" Style="{StaticResource StackOverflowPivotItemStyle}">
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="windows-phone-7" Style="{StaticResource StackOverflowPivotItemStyle}">
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/windows-phone-7"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="iphone" Style="{StaticResource StackOverflowPivotItemStyle}">
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/ios"/>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="android" Style="{StaticResource StackOverflowPivotItemStyle}">
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/android"/>
+            </phone:PivotItem>
+        </phone:Pivot>
     </Grid>
     
     <phone:PhoneApplicationPage.ApplicationBar>

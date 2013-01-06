@@ -9,17 +9,33 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Stackoverflow.Resources;
 using System.Diagnostics;
+using Microsoft.Phone.Tasks;
+using System.IO;
 
 namespace Stackoverflow
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        public StackOverflowBrowser CurrentBrowser
+        {
+            get
+            {
+                StackOverflowBrowser browser = (this.HomeScreen.SelectedItem as PivotItem).Content as StackOverflowBrowser;
+                return browser;
+            }
+        }
+        
         // Constructor
         public MainPage()
         {
             InitializeComponent();
             this.Loaded += MainPage_Loaded;
             this.OrientationChanged += MainPage_OrientationChanged;
+        }
+
+        void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         void MainPage_OrientationChanged(object sender, OrientationChangedEventArgs e)
@@ -36,16 +52,11 @@ namespace Stackoverflow
             }
         }
 
-        void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.WebBrowser.Navigate(new Uri(Constants.StackOverflowBaseUrl));
-        }
-
         protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
         {
-            if(this.WebBrowser.CanGoBack)
+            if(this.CurrentBrowser.WebBrowser.CanGoBack)
             {
-                this.WebBrowser.GoBack();
+                this.CurrentBrowser.WebBrowser.GoBack();
                 e.Cancel = true;
             }
             base.OnBackKeyPress(e);
@@ -53,7 +64,7 @@ namespace Stackoverflow
 
         private void Refresh_Click(object sender, EventArgs e)
         {
-            this.WebBrowser.Navigate(new Uri(this.WebBrowser.Source.AbsoluteUri));
+            this.CurrentBrowser.WebBrowser.Navigate(new Uri(this.CurrentBrowser.WebBrowser.Source.AbsoluteUri));
         }
 
         private void Settings_Click(object sender, EventArgs e)
@@ -64,21 +75,6 @@ namespace Stackoverflow
         private void About_Click(object sender, EventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
-        }
-
-        private void WebBrowser_Navigating(object sender, NavigatingEventArgs e)
-        {
-            SystemTray.ProgressIndicator.IsVisible = true;
-        }
-
-        private void WebBrowser_Navigated(object sender, NavigationEventArgs e)
-        {
-            SystemTray.ProgressIndicator.IsVisible = false;
-        }
-
-        private void WebBrowser_NavigationFailed(object sender, NavigationFailedEventArgs e)
-        {
-            SystemTray.ProgressIndicator.IsVisible = false;
         }
     }
 }
