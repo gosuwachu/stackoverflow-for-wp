@@ -76,5 +76,10 @@ namespace Stackoverflow
         {
             this.NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.Relative));
         }
+
+        private void SignIn_Clicked(object sender, EventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/StackOverflowAuthenticationPage.xaml", UriKind.Relative));
+        }
     }
 }

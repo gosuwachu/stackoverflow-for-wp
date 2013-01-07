@@ -59,6 +59,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized" BackgroundColor="{StaticResource StackOverflowBackgroundColor}" ForegroundColor="White">
         	<shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem IsEnabled="True" Text="sign in" Click="SignIn_Clicked"/>
         		<shell:ApplicationBarMenuItem IsEnabled="True" Text="settings" Click="Settings_Click"/>
         		<shell:ApplicationBarMenuItem IsEnabled="True" Text="about" Click="About_Click"/>
         	</shell:ApplicationBar.MenuItems>
