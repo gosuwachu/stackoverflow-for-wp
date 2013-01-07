@@ -8,6 +8,7 @@ Please contribute or suggest ideas that can make this app more usefull to other 
 Libraries used
 ===============
 Stacky (https://bitbucket.org/lfoust/stacky)
+
 JSON.NET (http://json.codeplex.com/)
 
 
