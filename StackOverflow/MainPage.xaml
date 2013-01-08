@@ -20,14 +20,21 @@
         <shell:ProgressIndicator IsIndeterminate="true" Text="Loading..." />
     </shell:SystemTray.ProgressIndicator>
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
+    <!--LayoutRoot is the root grid where all page content is placed #ca5100-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <phone:Pivot x:Name="HomeScreen" Background="{StaticResource StackOverflowBackground}" >
+        <phone:Pivot x:Name="HomeScreen" Background="White"
+                     RenderTransformOrigin="0.5,0.5">
+            <phone:Pivot.RenderTransform>
+                <ScaleTransform ScaleY="-1" />
+            </phone:Pivot.RenderTransform>
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
-                    <Grid Background="Gray">
-                        <Border BorderThickness="1" BorderBrush="White">
-                            <TextBlock Text="{Binding}" Style="{StaticResource PhoneTextTitle3Style}" />
+                    <Grid Background="#8a2621" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <ScaleTransform ScaleY="-1" />
+                        </Grid.RenderTransform>
+                        <Border BorderThickness="1" BorderBrush="Black">
+                            <TextBlock Text="{Binding}" FontWeight="Bold" Style="{StaticResource PhoneTextTitle3Style}" Margin="5,2"/>
                         </Border>
                     </Grid>
                 </DataTemplate>
@@ -39,19 +46,39 @@
             </phone:Pivot.TitleTemplate>
 
             <phone:PivotItem Header="main page" Style="{StaticResource StackOverflowPivotItemStyle}">
-                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com"/>
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com" 
+                                            RenderTransformOrigin="0.5,0.5">
+                    <local:StackOverflowBrowser.RenderTransform>
+                        <ScaleTransform ScaleY="-1" />
+                    </local:StackOverflowBrowser.RenderTransform>
+                </local:StackOverflowBrowser>
             </phone:PivotItem>
 
             <phone:PivotItem Header="windows-phone-7" Style="{StaticResource StackOverflowPivotItemStyle}">
-                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/windows-phone-7"/>
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/windows-phone-7"
+                                            RenderTransformOrigin="0.5,0.5">
+                    <local:StackOverflowBrowser.RenderTransform>
+                        <ScaleTransform ScaleY="-1" />
+                    </local:StackOverflowBrowser.RenderTransform>
+                </local:StackOverflowBrowser>
             </phone:PivotItem>
 
             <phone:PivotItem Header="iphone" Style="{StaticResource StackOverflowPivotItemStyle}">
-                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/ios"/>
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/ios"
+                                            RenderTransformOrigin="0.5,0.5">
+                    <local:StackOverflowBrowser.RenderTransform>
+                        <ScaleTransform ScaleY="-1" />
+                    </local:StackOverflowBrowser.RenderTransform>
+                </local:StackOverflowBrowser>
             </phone:PivotItem>
 
             <phone:PivotItem Header="android" Style="{StaticResource StackOverflowPivotItemStyle}">
-                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/android"/>
+                <local:StackOverflowBrowser InitialUri="http://stackoverflow.com/questions/tagged/android"
+                                            RenderTransformOrigin="0.5,0.5">
+                    <local:StackOverflowBrowser.RenderTransform>
+                        <ScaleTransform ScaleY="-1" />
+                    </local:StackOverflowBrowser.RenderTransform>
+                </local:StackOverflowBrowser>
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>
