@@ -36,15 +36,15 @@ namespace Stackoverflow
 
         private void WebBrowser_Navigating(object sender, NavigatingEventArgs e)
         {
-            if (!e.Uri.Host.Contains("stackoverflow.com") && !e.Uri.ToString().Contains("javascript"))
-            {
-                WebBrowserTask task = new WebBrowserTask();
-                task.Uri = e.Uri;
-                task.Show();
+            //if (!e.Uri.Host.Contains("stackoverflow.com") && !e.Uri.ToString().Contains("javascript"))
+            //{
+            //    WebBrowserTask task = new WebBrowserTask();
+            //    task.Uri = e.Uri;
+            //    task.Show();
 
-                e.Cancel = true;
-            }
-            else
+            //    e.Cancel = true;
+            //}
+            //else
             {
                 SystemTrayProgressIndicator.Show();
             }
